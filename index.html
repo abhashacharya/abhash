@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abhash Acharya — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink2: #4a4a4a;
+    --ink3: #888;
+    --paper: #faf9f6;
+    --surface: #f3f1ec;
+    --accent: #2e5fa3;
+    --accent-light: #e8eef8;
+    --rule: #d9d6ce;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,249,246,0.95);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem; height: 60px;
+  }
+  .nav-brand {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 13px; font-weight: 500; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--ink2);
+    text-decoration: none; transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    max-width: 960px; margin: 0 auto;
+    padding: 5rem 2rem 4rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+  }
+  .hero-text h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    line-height: 1.1;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .hero-text h1 span { color: var(--accent); }
+  .hero-text p { color: var(--ink2); font-size: 1rem; margin-bottom: 1.5rem; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2rem; }
+  .tag {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 12px; font-weight: 500;
+    padding: 4px 12px; border-radius: 20px;
+    letter-spacing: 0.04em;
+  }
+  .btn {
+    display: inline-block;
+    background: var(--accent); color: #fff;
+    padding: 10px 24px; border-radius: 6px;
+    font-size: 13px; font-weight: 500;
+    text-decoration: none; letter-spacing: 0.04em;
+    transition: background .2s, transform .15s;
+  }
+  .btn:hover { background: #1e4a8a; transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent; color: var(--accent);
+    border: 1.5px solid var(--accent);
+    margin-left: 10px;
+  }
+  .btn-ghost:hover { background: var(--accent-light); transform: translateY(-1px); }
+
+  .hero-visual {
+    display: flex; flex-direction: column; gap: 12px; align-items: flex-end;
+  }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    width: 100%; max-width: 280px;
+  }
+  .stat-card .num {
+    font-family: var(--serif);
+    font-size: 2rem; font-weight: 700; color: var(--accent);
+    line-height: 1;
+  }
+  .stat-card .lbl {
+    font-size: 12px; color: var(--ink3); margin-top: 2px; letter-spacing: 0.03em;
+  }
+
+  /* SECTIONS */
+  section { max-width: 960px; margin: 0 auto; padding: 4rem 2rem; }
+  .section-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700; margin-bottom: 2.5rem;
+    border-bottom: 2px solid var(--rule);
+    padding-bottom: 0.75rem;
+  }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 24px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 8px; top: 0; bottom: 0;
+    width: 1.5px; background: var(--rule);
+  }
+  .tl-item { position: relative; margin-bottom: 2rem; }
+  .tl-item::before {
+    content: ''; position: absolute; left: -20px; top: 6px;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--paper);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+  .tl-item .year {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    color: var(--accent); text-transform: uppercase; margin-bottom: 2px;
+  }
+  .tl-item h3 { font-size: 1rem; font-weight: 500; margin-bottom: 2px; }
+  .tl-item .place { font-size: 13px; color: var(--ink3); }
+
+  /* TWO-COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+
+  /* EXP CARDS */
+  .exp-list { display: flex; flex-direction: column; gap: 1.25rem; }
+  .exp-card {
+    border: 1px solid var(--rule);
+    border-radius: 10px; padding: 1.25rem 1.5rem;
+    background: #fff;
+    transition: box-shadow .2s;
+  }
+  .exp-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .exp-card .role { font-weight: 500; font-size: 1rem; }
+  .exp-card .org { color: var(--accent); font-size: 0.875rem; font-weight: 500; }
+  .exp-card .period { font-size: 12px; color: var(--ink3); margin-top: 2px; }
+  .exp-card .loc { font-size: 12px; color: var(--ink3); }
+
+  /* PUBLICATIONS */
+  .pub-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .pub-item {
+    padding: 1.25rem 1.5rem;
+    border-left: 3px solid var(--accent);
+    background: var(--surface);
+    border-radius: 0 8px 8px 0;
+  }
+  .pub-item p { font-size: 14px; color: var(--ink2); }
+  .pub-item a { color: var(--accent); font-size: 12px; font-weight: 500; text-decoration: none; }
+  .pub-item a:hover { text-decoration: underline; }
+
+  /* COURSES */
+  .course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 10px;
+  }
+  .course-item {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px; color: var(--ink2);
+  }
+  .course-item .platform {
+    font-size: 11px; color: var(--accent); font-weight: 500;
+    margin-top: 3px;
+  }
+
+  /* TESTIMONIALS */
+  .testimonial-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+  .testimonial-card {
+    background: #fff;
+    border: 1px solid var(--rule);
+    border-radius: 12px; padding: 1.5rem;
+  }
+  .testimonial-card blockquote {
+    font-size: 14px; color: var(--ink2);
+    font-style: italic; margin-bottom: 1rem;
+    line-height: 1.65;
+  }
+  .testimonial-card .reviewer { display: flex; align-items: center; gap: 10px; }
+  .testimonial-card .avatar {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--accent-light); display: flex; align-items: center;
+    justify-content: center; font-weight: 500; font-size: 13px; color: var(--accent);
+    flex-shrink: 0;
+  }
+  .testimonial-card .reviewer-name { font-weight: 500; font-size: 14px; }
+  .testimonial-card .reviewer-title { font-size: 12px; color: var(--ink3); }
+
+  /* TRAININGS */
+  .training-list { display: flex; flex-direction: column; gap: 10px; }
+  .training-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 12px 0; border-bottom: 1px solid var(--rule);
+  }
+  .training-item:last-child { border-bottom: none; }
+  .training-item .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); flex-shrink: 0; margin-top: 8px;
+  }
+  .training-item .training-name { font-weight: 500; font-size: 14px; }
+  .training-item .training-org { font-size: 13px; color: var(--ink3); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--rule);
+    text-align: center; padding: 2rem;
+    font-size: 13px; color: var(--ink3);
+  }
+
+  /* DIVIDER */
+  .divider { border: none; border-top: 1px solid var(--rule); margin: 0; }
+
+  @media (max-width: 700px) {
+    .hero { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.25rem; }
+    .hero-visual { align-items: flex-start; }
+    .two-col { grid-template-columns: 1fr; gap: 2rem; }
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    section { padding: 3rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#">Abhash Acharya</a>
+  <ul class="nav-links">
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#publications">Research</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <p class="section-label">Civil & Transportation Engineer</p>
+    <h1>Abhash<br><span>Acharya</span></h1>
+    <p>Faculty | Researcher | Transportation Engineering Specialist based in Kathmandu, Nepal. Program topper, published researcher, and dedicated educator shaping the next generation of engineers.</p>
+    <div class="hero-tags">
+      <span class="tag">Transportation Engg</span>
+      <span class="tag">Traffic Engineering</span>
+      <span class="tag">Road Safety</span>
+      <span class="tag">Civil Engineering</span>
+      <span class="tag">MBA</span>
+    </div>
+    <a class="btn" href="https://abhashacharya.com.np" target="_blank">Visit Full Site</a>
+    <a class="btn btn-ghost" href="#publications">View Research</a>
+  </div>
+  <div class="hero-visual">
+    <div class="stat-card">
+      <div class="num">8+</div>
+      <div class="lbl">Years of teaching experience</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">7</div>
+      <div class="lbl">Research publications</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">14+</div>
+      <div class="lbl">Final year projects supervised</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">3×</div>
+      <div class="lbl">Program topper (SLC, M.Sc, MBA)</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- EDUCATION -->
+<section id="education">
+  <p class="section-label">Academic Background</p>
+  <h2 class="section-title">Education</h2>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="year">2025</div>
+      <h3>MBA – Corporate Leadership · <em>Program Topper</em></h3>
+      <p class="place">University Campus, Tribhuvan University</p>
+    </div>
+    <div class="tl-item">
+      <div class="year">2020</div>
+      <h3>M.Sc. in Transportation Engineering · <em>Program Topper</em></h3>
+      <p class="place">Pulchowk Campus, IOE</p>
+    </div>
+    <div class="tl-item">
+      <div class="year">2017</div>
+      <h3>B.E. Civil Engineering · <em>Scholarship Holder</em></h3>
+      <p class="place">Pulchowk Campus, IOE</p>
+    </div>
+    <div class="tl-item">
+      <div class="year">2013</div>
+      <h3>+2 Science · <em>Nepal Topper</em></h3>
+      <p class="place">Liverpool International H.S. School</p>
+    </div>
+    <div class="tl-item">
+      <div class="year">2011</div>
+      <h3>SLC · <em>EDR Second Topper</em></h3>
+      <p class="place">Bal Kalyan Vidya Mandir (BKVM)</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">Career</p>
+  <h2 class="section-title">Professional Experience</h2>
+  <div class="exp-list">
+    <div class="exp-card">
+      <div class="role">Full Time Faculty – Master's Program</div>
+      <div class="org">Universal Engineering &amp; Science College</div>
+      <div class="period">Nov 2026 – Present</div>
+      <div class="loc">Chakupat, Lalitpur</div>
+    </div>
+    <div class="exp-card">
+      <div class="role">Head of Department &amp; Assistant Professor</div>
+      <div class="org">Aryan School of Engineering</div>
+      <div class="period">Jan 2023 – Feb 2026</div>
+      <div class="loc">Mid-Baneshwor, Kathmandu</div>
+    </div>
+    <div class="exp-card">
+      <div class="role">Adjunct Faculty</div>
+      <div class="org">Thapathali Campus, IOE</div>
+      <div class="period">2020 – Present</div>
+      <div class="loc">Thapathali, Kathmandu</div>
+    </div>
+    <div class="exp-card">
+      <div class="role">Lecturer / Year Co-ordinator</div>
+      <div class="org">Universal Engineering &amp; Science College</div>
+      <div class="period">Nov 2018 – Jan 2023</div>
+      <div class="loc">Chakupat, Lalitpur</div>
+    </div>
+    <div class="exp-card">
+      <div class="role">Civil Engineer</div>
+      <div class="org">Mudbhary &amp; Joshi Construction Pvt. Ltd.</div>
+      <div class="period">Apr 2018 – Aug 2018</div>
+      <div class="loc">China Town, Sundhara, Kathmandu</div>
+    </div>
+    <div class="exp-card">
+      <div class="role">Civil Engineering Intern</div>
+      <div class="org">Dream Developers Pvt. Ltd.</div>
+      <div class="period">Oct 2017 – Feb 2018</div>
+      <div class="loc">Hariharbhawan, Lalitpur</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <p class="section-label">Research &amp; Publications</p>
+  <h2 class="section-title">Selected Publications</h2>
+  <div class="pub-list">
+    <div class="pub-item">
+      <p>Karki, A. M., et al. &amp; Acharya, A. (2024). <strong>Electric load prediction using SARIMAX.</strong> <em>Australian Journal of Electrical and Electronics Engineering.</em></p>
+      <a href="https://doi.org/10.1080/1448837X.2024.2405438" target="_blank">doi.org/10.1080/1448837X.2024.2405438 →</a>
+    </div>
+    <div class="pub-item">
+      <p>Dhungana, K., et al. &amp; Acharya, A. <strong>Feasibility Study of a Motorcycle Lane: Evaluation of Travel Time and Delay Impacts at New Baneshwor Intersection.</strong></p>
+      <a href="https://www.researchgate.net/profile/Abhash-Acharya/publication/376807802" target="_blank">ResearchGate →</a>
+    </div>
+    <div class="pub-item">
+      <p>Thakuri, P. K., et al. &amp; Acharya, A. <strong>Calibration of VISSIM for Mixed Traffic Condition: A Case Study of Ekantakuna Intersection During COVID-19.</strong></p>
+      <a href="https://www.researchgate.net/publication/371291547" target="_blank">ResearchGate →</a>
+    </div>
+    <div class="pub-item">
+      <p>Jha, G. K.; Acharya, A.; Tiwari, H. <strong>Public Perception Study on Road Crossing Facilities and Determination of Waiting Time.</strong></p>
+      <a href="https://www.researchgate.net/publication/363184894" target="_blank">ResearchGate →</a>
+    </div>
+    <div class="pub-item">
+      <p>Acharya, A.; Marsani, A. (2020). <strong>Prediction of Traffic Conflicts at Signalized Intersection: A Case Study of New Baneshwor Intersection.</strong> IOE Graduate Conference (IOEGC-8).</p>
+      <a href="http://conference.ioe.edu.np/publications/ioegc8/ioegc-8-128-80183.pdf" target="_blank">Conference Paper →</a>
+    </div>
+    <div class="pub-item">
+      <p>Acharya, A.; Gautam, A. (2019). <strong>Road Safety Audit – A Case Study of Ringroad (K13+400 – K14+450).</strong> Techno-Civil Universe Vol.6, CESS-Nepal.</p>
+    </div>
+    <div class="pub-item">
+      <p>Dhakal, R., Williamson, S. J., et al. &amp; Acharya, A. (2016). <strong>Technical and economical prospective for site implementation of low head gravitational water vortex power plant.</strong></p>
+      <a href="https://research-information.bris.ac.uk/ws/portalfiles/portal/117899832/Sam_Williamson_Technical_and_Economic_Prospects_for_the_Site_Implementation.pdf" target="_blank">Full Paper →</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- COURSES -->
+<section id="courses">
+  <p class="section-label">Continuing Education</p>
+  <h2 class="section-title">Online Courses &amp; Certifications</h2>
+  <div class="course-grid">
+    <div class="course-item">Excel Skills for Business<div class="platform">Coursera</div></div>
+    <div class="course-item">Introduction to Data Analysis using Excel<div class="platform">Coursera</div></div>
+    <div class="course-item">Statistical Distributions &amp; Business Decisions<div class="platform">Coursera</div></div>
+    <div class="course-item">Python Programming Essentials<div class="platform">Coursera</div></div>
+    <div class="course-item">Sustainable Urban Freight Transport<div class="platform">edX</div></div>
+    <div class="course-item">Research Methods: An Engineering Approach<div class="platform">edX</div></div>
+    <div class="course-item">LaTeX for Students, Engineers &amp; Scientists<div class="platform">edX</div></div>
+    <div class="course-item">Results-Based Project Management: M&amp;E<div class="platform">edX</div></div>
+    <div class="course-item">Private Financing for Infrastructure &amp; Sustainable Growth<div class="platform">ADBI</div></div>
+    <div class="course-item">Leveraging Urban Mobility Disruptions<div class="platform">edX</div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <p class="section-label">What Colleagues Say</p>
+  <h2 class="section-title">Testimonials</h2>
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <blockquote>"He is a cheerful guy with outstanding knowledge of civil engineering… He is really good with software programs related to civil engineering. He will be a valuable addition to the company he works for."</blockquote>
+      <div class="reviewer">
+        <div class="avatar">AP</div>
+        <div>
+          <div class="reviewer-name">Aakash Parajuli</div>
+          <div class="reviewer-title">Structural Estimator, Kiewit</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <blockquote>"Abhash was extremely diligent, hard working and a quick learner who can master new skills easily… His extraordinary people skills, subject matter expertise and the ability to apply knowledge into action gives him a distinct edge."</blockquote>
+      <div class="reviewer">
+        <div class="avatar">AY</div>
+        <div>
+          <div class="reviewer-name">Ayush Puri</div>
+          <div class="reviewer-title">Construction QA Engineer, CDM Smith</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <blockquote>"He constantly gives his best in everything he gets his feet wet. He is hardworking, motivated, and a great leader. He strives to make positive impact on people's lives and put excellence in his work."</blockquote>
+      <div class="reviewer">
+        <div class="avatar">BP</div>
+        <div>
+          <div class="reviewer-name">Binita Pokharel</div>
+          <div class="reviewer-title">Project Controls Engineer, Superior Construction</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TRAININGS -->
+<section id="trainings">
+  <p class="section-label">Professional Development</p>
+  <h2 class="section-title">Training &amp; Workshops Attended</h2>
+  <div class="two-col">
+    <div>
+      <div class="training-list">
+        <div class="training-item">
+          <div class="dot"></div>
+          <div>
+            <div class="training-name">2nd International Conference on Integrated Transport for Sustainable Mobility</div>
+            <div class="training-org">MoPIT &amp; SOTEN · Feb 2023</div>
+          </div>
+        </div>
+        <div class="training-item">
+          <div class="dot"></div>
+          <div>
+            <div class="training-name">Streamlining Academic Research &amp; Innovation</div>
+            <div class="training-org">Pokhara University Research Center · Sep 2022</div>
+          </div>
+        </div>
+        <div class="training-item">
+          <div class="dot"></div>
+          <div>
+            <div class="training-name">Slope Stabilization Design Training</div>
+            <div class="training-org">SCAEF Nepal · May 2022</div>
+          </div>
+        </div>
+        <div class="training-item">
+          <div class="dot"></div>
+          <div>
+            <div class="training-name">Manuscript Writing Training</div>
+            <div class="training-org">Cosmos College · Sep 2021</div>
+          </div>
+        </div>
+        <div class="training-item">
+          <div class="dot"></div>
+          <div>
+            <div class="training-name">Research Design and Dissemination Modes</div>
+            <div class="training-org">UESC / NSET / IRIS · Mar 2021</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="training-list">
+        <div class="training-item">
+          <div class="dot"></div>
+          <div>
+            <div class="training-name">Self-Defensive Driving Training (2W &amp; 4W)</div>
+            <div class="training-org">RMR Foundation &amp; SSTN · Jul 2020</div>
+          </div>
+        </div>
+        <div class="training-item">
+          <div class="dot"></div>
+          <div>
+            <div class="training-name">Inter-disciplinary Learning for Road Danger Reduction</div>
+            <div class="training-org">Nepal Injury Research Center · Jun 2020</div>
+          </div>
+        </div>
+        <div class="training-item">
+          <div class="dot"></div>
+          <div>
+            <div class="training-name">National Road Safety Action Plan Workshop</div>
+            <div class="training-org">Ministry of Physical Infrastructure · Jul 2019</div>
+          </div>
+        </div>
+        <div class="training-item">
+          <div class="dot"></div>
+          <div>
+            <div class="training-name">National Capacity Building Workshop on Road Safety</div>
+            <div class="training-org">Road Safety Society Nepal / DOR · 2019</div>
+          </div>
+        </div>
+        <div class="training-item">
+          <div class="dot"></div>
+          <div>
+            <div class="training-name">Seminar on Cross-Border Inland Waterways</div>
+            <div class="training-org">AIDIA · 2018</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section id="contact" style="text-align:center; padding: 5rem 2rem;">
+  <p class="section-label">Get in Touch</p>
+  <h2 class="section-title" style="border:none; max-width:500px; margin: 0 auto 1rem;">Let's Connect</h2>
+  <p style="color:var(--ink2); max-width:460px; margin:0 auto 2rem;">For academic collaboration, research inquiries, or professional opportunities, feel free to reach out.</p>
+  <a class="btn" href="https://abhashacharya.com.np" target="_blank">Visit abhashacharya.com.np</a>
+</section>
+
+<footer>
+  <p>© 2026 Abhash Acharya · Built with GitHub Pages · <a href="https://abhashacharya.com.np" style="color:var(--accent); text-decoration:none;">abhashacharya.com.np</a></p>
+</footer>
+
+</body>
+</html>
